@@ -1,0 +1,89 @@
+
+ {% extends 'base.html'%}
+
+
+
+
+
+{% block content %}
+{% load static %}
+{% static "images" as baseUrl%}
+
+
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+<div style="background: url('/media/img/images/home.jpg');background-repeat:no-repeat;background-size: cover;color: white;">
+
+
+  	<div class="col-md-12">
+		<div class="col-md-12 divhead">
+			<br>
+			<center><h1>Packages</h1></center>
+			<hr>
+			<br>
+		</div>
+	</div>
+
+	<form method="POST" class="post-form" action="#">  
+	        {% csrf_token %}  
+
+		<div class="container">
+			<div class="row">
+
+{% for Pack in Packages %}
+
+
+				<div class="col-md-3">
+			  <div class="card" style="padding: 1%;margin:1%;margin-top: 10px;">
+			  	<div class="col-md-12" style="background-color: white;padding: 16px;">
+			    <img class="card-img-top " src="{{Pack.Image1.url}}" alt="Card image" style="height: 250px;width:100%;">
+			    <div class="card-body" >
+			      <h4 class="card-title N_{{ Pack.id }}"style="color: black;">{{Pack.Package_name}}</h4>
+			      <p  style="font-size: small;color: black;" class="card-text P_{{ Pack.id }}">{{Pack.Desc}}</p>
+
+			      <a href="/Packagedetails/{{ Pack.id }}" style="display: flow-root;background-color: #343a40;" class="btn btn-primary stretched-link text-center"> View Packages</a>
+			    </div>
+			    </div>
+			  </div>
+			  </div>
+			  	<br>
+				<br>
+
+
+
+<script type="text/javascript">
+	
+	var name = $('.P_{{ Pack.id }}').text();
+	if (name.length > 0) 
+	{
+	    var shortname = name.substring(0, 40) + " ...";
+	    $('.P_{{ Pack.id }}').text(shortname) ;
+	}
+
+    var n = $('.N_{{ Pack.id }}').text();
+	if (n.length > 20) 
+	{
+	    var short = n.substring(0, 20) + " ...";
+	    $('.N_{{ Pack.id }}').text(short) ;
+	}
+</script>
+
+{% endfor %}
+
+			</div>
+			<br>
+		</div>
+
+	</form> 
+</div>
+
+
+
+{% endblock %}

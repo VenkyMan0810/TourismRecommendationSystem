@@ -1,0 +1,166 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+<div style="background: url('/media/img/images/home.jpg');background-repeat:no-repeat;background-size: cover;color: white;">
+<br>
+<br>
+<br>
+<div class="container" style="background-color: white;width: 50%;" >
+<form class="form-horizontal" action='/Register/'  method="POST" id="signup-form">
+  {% csrf_token %}
+  <center>
+  <div>
+    <h2 style="color: black">Register</h2>
+    <hr>
+  </div>
+  </center> 
+
+
+
+
+  <div class="form-row">
+    <div class="col-md-4 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip01">First name</label>
+      <input type="text" class="form-control" name="First_name" id="First_name" placeholder="First name" value="" required>
+      
+    </div>
+    <div class="col-md-4 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip02">Last name</label>
+      <input type="text" class="form-control" name="Last_name" id="Last_name"  placeholder="Last name" value="" required>
+      
+    </div>
+    <div class="col-md-4 "style="margin-bottom: 10px">
+      <label style="color: black" for="validationTooltipUsername">Username</label>
+      <div class="input-group">
+        <input type="text" class="form-control" name="Username" id="Username" placeholder="Username" value="" required>
+        
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <div class="form-row">
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black" for="validationTooltip03">Dob</label>
+      <input type="date" class="form-control" name="Dob" id="Dob" placeholder="Dob" required>
+      
+    </div>
+    <div class="col-md-4 "style="margin-bottom: 10px">
+      <label style="color: black" for="validationTooltip04">Gender</label>
+      <select name="Gender" id="Gender" placeholder="State" class="form-control">
+        <option selected>Choose...</option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+      
+    </div>
+    <div class="col-md-4 "style="margin-bottom: 10px">
+      <label style="color: black" for="validationTooltip05">Phone</label>
+      <input type="number" class="form-control" name="Phone" id="Phone"  placeholder="Phone" required>
+      
+    </div>
+  </div> 
+  <div class="col-md-12">
+    <div class="form-group col-md-5">
+      <label style="color: black" for="inputEmail4">Email</label>
+      <input type="email" class="form-control" name="Email" id="Email"  placeholder="Email">
+    </div>
+    <div class="col-md-2"></div>
+    <div class="form-group col-md-5">
+      <label style="color: black" for="inputPassword4">Password</label>
+      <input type="password" class="form-control" name="Password" id="Password" placeholder="Password">
+    </div>
+  
+  <div class="form-group col-md-12">
+    <label style="color: black" for="inputAddress">Address</label>
+    <input type="text" class="form-control" name="Address1" id="Address1" placeholder="1234 Main St">
+  </div>
+  <div class="form-group col-md-12">
+    <label style="color: black" for="inputAddress2">Address 2</label>
+    <input type="text"  class="form-control" name="Address2" id="Address2" placeholder="Apartment, studio, or floor">
+  </div>
+  </div>
+  <div class="col-md-12">
+    <div class="form-group col-md-5">
+      <label style="color: black" for="inputCity">City</label>
+      <input type="text" placeholder="City" class="form-control" name="City" id="City">
+    </div>
+    <div class="form-group col-md-2"></div>
+    <div class="form-group col-md-5">
+      <label style="color: black" for="inputState">State</label>
+      <select name="State" id="State" placeholder="State" class="form-control">
+        <option selected>Choose...</option>
+        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+        <option value="Andhra Pradesh">Andhra Pradesh</option>
+        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+        <option value="Assam">Assam</option>
+        <option value="Bihar">Bihar</option>
+        <option value="Chandigarh">Chandigarh</option>
+        <option value="Chhattisgarh">Chhattisgarh</option>
+        <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+        <option value="Daman and Diu">Daman and Diu</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Goa">Goa</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Haryana">Haryana</option>
+        <option value="Himachal Pradesh">Himachal Pradesh</option>
+        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+        <option value="Jharkhand">Jharkhand</option>
+        <option value="Karnataka">Karnataka</option>
+        <option value="Kerala">Kerala</option>
+        <option value="Lakshadweep">Lakshadweep</option>
+        <option value="Madhya Pradesh">Madhya Pradesh</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Manipur">Manipur</option>
+        <option value="Meghalaya">Meghalaya</option>
+        <option value="Mizoram">Mizoram</option>
+        <option value="Nagaland">Nagaland</option>
+        <option value="Orissa">Orissa</option>
+        <option value="Pondicherry">Pondicherry</option>
+        <option value="Punjab">Punjab</option>
+        <option value="Rajasthan">Rajasthan</option>
+        <option value="Sikkim">Sikkim</option>
+        <option value="Tamil Nadu">Tamil Nadu</option>
+        <option value="Tripura">Tripura</option>
+        <option value="Uttaranchal">Uttaranchal</option>
+        <option value="Uttar Pradesh">Uttar Pradesh</option>
+        <option value="West Bengal">West Bengal</option>
+        
+      </select>
+    </div>
+    <br>
+  </div>
+ 
+  <center>
+
+    <div class="col-md-12">
+         <br>
+  <button type="submit" class="btn btn-primary">Register</button>
+    <br>  <br>  <br>
+</div>
+</center>
+
+
+  </center>
+  <br>
+</form>
+ <br>
+</div>
+<br>
+<br>
+
+
+</div>
+<br> {% endblock%}
+   

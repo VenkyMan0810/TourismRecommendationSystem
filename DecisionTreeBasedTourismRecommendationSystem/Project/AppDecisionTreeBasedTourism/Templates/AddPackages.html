@@ -1,0 +1,155 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+<div style="background: url('/media/img/images/home.jpg');background-repeat:no-repeat;background-size: cover;color: white;">
+<br>
+<br>
+<br>
+<div class="container" style="background-color: white;width: 50%;" >
+<form class="form-horizontal" action='/AddPackages/' enctype="multipart/form-data" method="POST" id="signup-form">
+
+    {% csrf_token %}
+  <center>
+  <div>
+    <h2 style="color: black">Add Packages</h2>
+    <hr>
+  </div>
+  </center> 
+  <div class="form-row">
+    <div class="col-md-12 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip01">Package Name</label>
+      <input type="text" class="form-control" id="Package_Name" name="Package_Name" placeholder="Package Name..." value="" required>
+      
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <div class="form-row">
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black" for="validationTooltip03">Image 1</label>
+      <input type="file" name="Image_upload1" style="margin-top: 2px;margin-bottom: 2%;"  class="form-control txtbox1">
+      
+    </div>
+   
+ 
+ 
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black" for="validationTooltip03">Image 2</label>
+      <input type="file"  name="Image_upload2"  style="margin-top: 2px;margin-bottom: 2%;"  class="form-control txtbox1">
+      
+    </div>
+   
+ 
+ 
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black" for="validationTooltip03">Image 3</label>
+      <input type="file" name="Image_upload3"  style="margin-top: 2px;margin-bottom: 2%;"  class="form-control txtbox1"> 
+      
+    </div>
+    </div> 
+
+
+
+  <div class="form-row">
+    <div class=" col-md-12" style="margin-bottom: 10px">
+      <label style="color: black" >Description</label>
+      <input type="text" required="" name="Description" requi#343a40=""  style="margin-top: 2px;margin-bottom: 2%;" placeholder="Description" class="form-control txtbox1">
+      
+    </div>
+    
+  </div>
+
+
+  <div class=" col-md-12" style="margin-bottom: 10px">
+    <label style="color: black" for="inputAddress">Itinerary</label>
+    <input type="text" class="form-control" name="Itinerary1" id="Itinerary1" placeholder="Flight / Train details">
+  </div>
+
+
+  <div class=" col-md-12" style="margin-bottom: 10px">
+    <label style="color: black" for="inputAddress2">Itinerary 2</label>
+    <input type="text"  class="form-control" name="Itinerary2" id="Itinerary2" placeholder="Hotel details">
+  </div>
+
+  <div class="col-md-12" style="margin-bottom: 10px">
+    <label style="color: black" for="inputAddress2">Itinerary 3</label>
+    <input type="text"  class="form-control" name="Itinerary3" id="Itinerary3" placeholder="sight seeing , beach walk etc...">
+  </div>
+
+
+  <div class="form-row">
+    <div class=" col-md-12" style="margin-bottom: 10px">
+      <label style="color: black" for="inputCity">Price per person</label>
+      <input type="number" placeholder="Price" name="Price" id="Price" class="form-control" id="inputCity">
+    </div>
+  </div>
+  <br>
+  <div class="form-row">
+    <div class=" col-md-12" style="margin-bottom: 10px">
+      <label style="color: black" >Duration</label>
+      <input type="text" placeholder="Duration" name="Duration" id="Duration" class="form-control" id="inputCity">
+    </div>
+  </div>
+  <br>
+
+
+    <div class="form-row">
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black" >City</label>
+      <input type="text"  class="form-control" placeholder="City" name="City" name="City"  id="Itinerary3" placeholder="sight seeing , beach walk etc...">  
+      
+    </div>
+   
+ 
+ 
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black" >Suitable Month</label>
+       <input type="text"  class="form-control" placeholder="Months" name="Month" name="Month"  placeholder="Suitable months">
+     
+      
+    </div>
+   
+ 
+ 
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black">Suitable Group Type</label>
+      <select id="Group" name="Group" placeholder="State" class="form-control">
+        <option selected>Choose...</option>
+        <option value="Family">Family</option>
+        <option value="Friends">Friends</option>
+        <option value="Romantic">Romantic</option>
+        <option value="Office Trips">Office Trips</option>      
+      </select> 
+      <br>
+    </div>
+    </div> 
+
+<br>
+  <center>
+  <button type="submit" class="btn btn-primary">Register</button>
+  </center>
+  <br>
+</form>
+
+</div>
+<br>
+<br>
+
+
+</div>
+<br> 
+{% endblock%}
+   

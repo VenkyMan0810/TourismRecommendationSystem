@@ -1,0 +1,62 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+<form id="CartDetails" method="POST" class="post-form" action="/addtocart/">  
+        {% csrf_token %}  
+<center>
+<div class="container-fluid" style="margin-top: 1%;padding:5%">	
+	<div class="table-responsive">
+	<table class="table table-striped table-bordered table-sm" >  
+    <thead style="background-color: black;color: white" class="text-white">  
+    <tr> 
+    	<th>ID</th> 
+        <th>First Name</th>  
+        <th>Last Name</th>  
+        <th>Dob</th>  
+        <th>Gender</th>  
+        <th>Phone</th>    
+        <th>Email</th> 
+        <th>Username</th>
+        <th>Password</th> 
+        <th>Address</th> 
+        <th>City</th>
+        <th>State</th>
+    </tr>  
+    </thead>  
+    <tbody>  
+
+	{% for Us in Users %}  
+		<tr>  
+			<td>{{ Us.id }}</td>   
+	        <td>{{ Us.First_name }}</td>  
+	        <td>{{ Us.Last_name }}</td>  
+	        <td>{{ Us.Dob }}</td>  
+	        <td>{{ Us.Gender }}</td>  
+	        <th>{{ Us.Phone }}</th>  
+	        <th>{{ Us.Email }}</th> 
+	        <th>{{ Us.Username }}</th>  
+	        <td>{{ Us.Password }}</td>  
+	        <th>{{ Us.Address }}</th>  
+	        <th>{{ Us.City }}</th> 
+	        <th>{{ Us.State }}</th>  
+	          
+		</tr> 
+	{% endfor %} 
+
+    </tbody>  
+	</table>
+</div>
+</div>
+</center>
+</form>
+
+ {% endblock%}

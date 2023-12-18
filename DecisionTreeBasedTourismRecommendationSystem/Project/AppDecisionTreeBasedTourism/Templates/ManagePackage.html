@@ -1,0 +1,61 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+<form id="CartDetails" method="POST" class="post-form" action="/addtocart/">  
+        {% csrf_token %}  
+<center>
+<div class="container-fluid" style="margin-top: 1%;padding:5%">	
+	<div class="table-responsive">
+	<table class="table table-striped table-bordered table-sm" style="height: 500px">  
+    <thead style="background-color: black;color: white" class="text-white">  
+    <tr>  
+    	 
+        <th>id</th>  
+        <th>Package_name</th>  
+        <th>Desc</th>
+        <th>Itenary</th>    
+        <th>Duration</th> 
+        <th>Price</th>
+        <th>City</th>    
+        <th>Suitable_Month</th> 
+        <th>Suitable_group</th>
+        <th>Update Status</th> 
+    </tr>  
+    </thead>  
+    <tbody>  
+
+	{% for pack in Packages %}  
+		<tr>
+	        <td>{{ pack.id }}</td>  
+	        <td>{{ pack.Package_name }}</td>  
+	        <td>{{ pack.Desc }}</td>  
+	        <td>{{ pack.Itenary }}</td>  
+	        <th>{{ pack.Duration }}</th>  
+	        <th>{{ pack.Price }} *Per Person</th> 
+	        <th>{{ pack.City }}</th>  
+	        <th>{{ pack.Suitable_Month }}</th> 
+	        <th>{{ pack.Suitable_group }}</th>  
+	        <td>   
+	            <a href="/updatePackage/{{ pack.id }}">Update</a>  
+	        </td>  
+		</tr> 
+	{% endfor %} 
+
+    </tbody>  
+	</table>
+</div>
+</div>
+</center>
+</form>
+
+
+ {% endblock%}

@@ -1,0 +1,65 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+
+<form id="CartDetails" method="POST" class="post-form" action="/addtocart/">  
+        {% csrf_token %}  
+<center>
+<div class="container-fluid" style="margin-top: 1%;padding:5%">	
+	<div class="table-responsive">
+	<table class="table table-striped table-bordered table-sm" >  
+    <thead style="background-color: black;color: white" class="text-white">  
+    <tr> 
+    	 
+        <th> id</th>  
+        <th>Package_name</th>  
+        <th>City</th>  
+        <th>User_id</th>  
+        <th>Duration</th>    
+        <th>Travelling_Month</th> 
+        <th>travelling_persons</th>
+        <th>Group_type</th> 
+        <th>PackageAmount</th> 
+        <th>status</th>
+        <th>Update</th>
+    </tr>  
+    </thead>  
+    <tbody>  
+
+
+	{% for or in Packages %}  
+		<tr>  
+	        <td>{{ or.id }}</td>  
+	        <td>{{ or.Package_name }}</td>  
+	        <td>{{ or.City }}</td>  
+	        <td>{{ or.User_id }}</td>  
+	        <td>{{ or.Duration }}</td>  
+	        <td>{{ or.Travelling_Month }}</td> 
+	        <td>{{ or.travelling_persons }}</td> 
+	        <td>{{ or.Group_type }}</td> 
+	        <td>{{ or.PackageAmount }}</td>
+	        <td>{{ or.status }}</td>
+	        <td>   
+	            <a href="/updatestatus/{{ or.id }}">Update</a>  
+	        </td>  
+		</tr> 
+	{% endfor %} 
+
+    </tbody>  
+	</table>
+</div>
+</div>
+</center>
+</form>
+
+
+ {% endblock%}

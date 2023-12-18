@@ -1,0 +1,55 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+
+<div style="background: url('/media/img/images/home.jpg');background-repeat:no-repeat;background-size: cover;color: white;height: 507px;">
+
+
+	<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto" style="margin-left: 650px;padding: 78px;">
+        <div class="card card-signin my-5">
+          <div class="card-body" >
+          	<hr class="my-4">
+            <h3 class="card-title text-center">User Sign In</h3>
+
+            <form class="form-signin" action="/User_login/" method="POST">
+                {% csrf_token %}
+              <div class="form-label-group">
+              	<label for="Username">Username</label>
+                <input type="text" id="Username" name="Username" class="form-control" placeholder="Username" required="" autofocus>                
+              </div>
+              <br>
+              <div class="form-label-group">
+              	<label for="inputPassword">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                <br>
+              </div>
+              <a href="{% url 'Register'%}"><label class="custom-control-label" for="customCheck1">New User/Register</label></a>
+              <br>
+              
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <hr class="my-4">
+             
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+	
+</div>
+<br>
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    {% endblock%}

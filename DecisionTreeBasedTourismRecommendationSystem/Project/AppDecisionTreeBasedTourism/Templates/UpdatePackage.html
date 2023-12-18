@@ -1,0 +1,235 @@
+ {% extends 'base.html'%}
+    {% block content%}
+{% load static %}
+
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+
+
+
+<div style="background: url('/media/img/images/home.jpg');background-repeat:no-repeat;background-size: cover;color: white;">
+<br>
+<br>
+<br>
+<div class="container" style="background-color: white;width: 50%;" >
+<form class="form-horizontal" id="form1" action='/updatePackage/{{Packages.id}}' enctype="multipart/form-data" method="POST" id="signup-form">
+
+    {% csrf_token %}
+  <center>
+  <div>
+    <h2 style="color: black">Update Packages</h2>
+    <hr>
+  </div>
+  </center> 
+  <div class="form-row">
+    <div class="col-md-12 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip01">Package Name</label>
+      <input type="text" class="form-control" id="Package_Name" name="Package_Name" placeholder="Package Name..." value="{{Packages.Package_name}}" required="">
+      <input type="hidden" class="form-control" id="pid" name="pid" placeholder="Package Name..." value="{{Packages.id}}" required="">
+      
+    </div>
+  </div>
+        
+
+  <br>
+  <br>
+  <br>
+  <div class="form-row">
+    <div class="col-md-12"style="margin-bottom: 10px">
+      <br>
+      <label style="color: black" for="validationTooltip03">Add More Photo</label>
+      <input type="file" name="Image_upload3" id="Image_upload3"  style="margin-top: 2px;margin-bottom: 2%;"  class="form-control txtbox1">
+      
+    </div>
+   
+ 
+ 
+   
+
+
+  <div class="form-row">
+    <div class=" col-md-12" style="margin-bottom: 10px">
+      <label style="color: black" >Description</label>
+      <input type="text" required="" value="{{Packages.Desc}}" name="Description" id="Description" required=""  style="margin-top: 2px;margin-bottom: 2%;" placeholder="Description" class="form-control txtbox1">
+      
+    </div>
+    
+  </div>
+
+  <div class=" col-md-12" style="margin-bottom: 10px">
+    <label style="color: black" for="inputAddress">Itinerary</label>
+    <input type="text" class="form-control" value="{{Packages.Itenary}}" name="Itinerary1" id="Itinerary1" placeholder="Flight / Train details">
+  </div>
+
+
+
+ 
+  <div class="form-row">
+    <div class=" col-md-12" style="margin-bottom: 10px">
+      <label style="color: black" for="inputCity">Price per person</label>
+      <input type="number" placeholder="Price" value="{{Packages.Price}}" name="Price" id="Price" class="form-control" id="inputCity">
+    </div>
+  </div>
+  <br>
+  <div class="form-row">
+    <div class=" col-md-12" style="margin-bottom: 10px">
+      <label style="color: black" >Duration</label>
+      <input type="text" placeholder="Duration" value="{{Packages.Duration}}" name="Duration" id="Duration" class="form-control" id="inputCity">
+    </div>
+  </div>
+  <br>
+
+
+    <div class="form-row">
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black" >City</label>
+      <input type="text"  class="form-control" value="{{Packages.City}}" placeholder="City" name="City" name="City"  id="City" >  
+      
+    </div>
+   
+ 
+ 
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black" >Suitable Month</label>
+       <input type="text"  class="form-control" value="{{Packages.Suitable_Month}}" placeholder="Months" name="Month" id="Month"  placeholder="Suitable months">
+     
+      
+    </div>
+   
+
+ 
+    <div class="col-md-4"style="margin-bottom: 10px">
+      <label style="color: black">Suitable Group Type</label>
+      <select id="Group" name="Group" placeholder="State"  class="form-control">
+        <option value="Choose">Choose...</option>
+        <option value="Family">Family</option>
+        <option value="Friends">Friends</option>
+        <option value="Romantic">Romantic</option>
+        <option value="Office Trips">Office Trips</option>      
+      </select> 
+      <br>
+    </div>
+    </div> 
+
+<br>
+  <center>
+  <input type="button" onclick="validate();" name="ButtonApply" value="Update &#8250;&#8250;"  id="ButtonApply" class="btn btn-round btn-primary" />
+  </center>
+
+</form>
+
+</div>
+<br>
+<br>
+
+
+</div>
+<br> 
+
+<script>
+  $(document).ready(function(){ 
+    document.querySelector('option[value= {{Packages.Suitable_group}}]').selected = true
+});
+
+
+function  validate()
+{
+if(document.getElementById('Package_Name').value != '')
+    {
+      if(document.getElementById('Image_upload3').value != '')
+      {
+        
+        if(document.getElementById('Description').value != '')
+        {
+          
+            if(document.getElementById('Itinerary1').value != '')
+            {
+                   if(document.getElementById('Price').value != '')
+                    {
+                           if(document.getElementById('Duration').value != '')
+                              {
+                                     
+                                      if(document.getElementById('City').value != '')
+                                        {
+                                              if(document.getElementById('Month').value != '')
+                                                  {
+                                                        if(document.getElementById('Group').value != '')
+                                                          {
+                                                                document.getElementById('form1').submit()
+                                                                return true;
+                                                            
+                                                          }
+                                                          else
+                                                          {
+                                                            alert("Please Select the Group");
+                                                            return false;
+                                                          }
+                                                    
+                                                  }
+                                                  else
+                                                  {
+                                                    alert("Please Select the Month");
+                                                    return false;
+                                                  }
+                                          
+                                        }
+                                        else
+                                        {
+                                          alert("Please Select the City");
+                                          return false;
+                                        }
+                              }
+                              else
+                              {
+                                alert("Please enter Duration");
+                                return false;
+                              }
+                      
+                    }
+                    else
+                    {
+                      alert("Please enter Price");
+                      return false;
+                    }
+              
+            }
+            else
+            {
+              alert("Please enter Itinerary1");
+              return false;
+            }
+          
+        }
+        else
+        {
+          alert("Please enter Description");
+          return false;
+        }
+
+      }
+      else
+      {
+        alert("Please  enter Image_upload1");
+        return false;
+      }
+    }     
+    else
+    {
+      alert("Please Enter the Package_Name");
+      return false;
+    }
+
+      
+}
+
+  </script>
+{% endblock%}
+   
